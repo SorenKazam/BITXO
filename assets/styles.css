@@ -1,3 +1,4 @@
+/* ---------- GENERAL ---------- */
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
 
 * {
@@ -15,27 +16,14 @@ body {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
     align-content: center;
     gap: 10px;
 }
 
-div.main {
-    width: 100vw;
-    height: 100vh;
-    background-color: rgb(45, 139, 216);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    gap: 10px;
-}
-
+/* ---------- MENU ---------- */
 div.menu-main {
     display: flex;
     flex-direction: column;
@@ -51,7 +39,7 @@ div.menu-main {
     gap: 10px;
 }
 
-h1.title {
+div.menu-main > h1.title {
     font-size: 3em;
     letter-spacing: 10px;
     color: white;
@@ -59,7 +47,7 @@ h1.title {
     text-transform: uppercase;
 }
 
-button.button {
+div.menu-main > button.button {
     background-color: rgba(4, 170, 109, 0.404);
     border: none;
     border-radius: 10px;
@@ -72,6 +60,56 @@ button.button {
     cursor: pointer;
 }
 
-button.button:hover, button.button:active {
+div.menu-main > button.button:hover, div.menu-main > button.button:active {
     background-color: rgba(4, 170, 109, 1);
+}
+
+/* ---------- NAVBAR ---------- */
+nav.navbar {
+    background-color: red;
+    width: 100vw;
+    padding: 5px;
+    list-style-type: none;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    gap: 30px;
+}
+
+nav.navbar > button.game-btn {
+    border: none;
+    background-color: rgba(231, 112, 14, 0);
+    color: white;
+    padding: 10px 35px;
+    cursor: pointer;
+}
+
+nav.navbar > button.game-btn:hover {
+    background-color: rgba(231, 112, 14, 1);
+}
+
+/* ---------- PLAY AREA ---------- */
+div.game-play-area {
+    height: 500px;
+    border: 2px solid black;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-clip: content-box;
+    background-size: cover;
+    object-fit: cover;
+}
+
+/* ---------- GAME BITXO NEEDS ---------- */
+div.game-play-needs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    gap: 30px;
 }

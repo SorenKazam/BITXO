@@ -5,17 +5,19 @@ const gameSoundClick = new Audio('assets/sound/start.mp3')
 
 // game is loaded
 window.addEventListener('load', function(){
-    if(gameState == 'menuMain'){
-        menuMain()
-    }
+  // remove the "index.html" from the url
+  this.history.pushState({screen: 'main'}, 'BITXOS GAME', '/')
+
+  // load game main menu when page is loaded
+  if(gameState == 'menuMain'){
+    menuMain()
+  }
 })
 
-/* window.addEventListener('beforeunload', function(event){
-    event.preventDefault()
-}) */
 
 /* MENU SYSTEM */
 function menuMain(){
+  localStorage.removeItem('bitxoName')
     // reset gameDisplay
     gameDisplay.innerHTML = ''
 
@@ -64,9 +66,91 @@ function menuMain(){
 }
 
 function game(){
-    // reset display
-    gameDisplay.innerHTML = ''
-    console.log('Game')
+  console.log(localStorage.getItem('data'))
+  if(!localStorage.getItem('bitxoName')){
+    while(true){
+      var bitxoName = window.prompt('Welcome, give a name to your bitxo')
+      if(bitxoName){
+        localStorage.setItem('bitxoName', bitxoName)
+        break
+      }
+    }
+  }
+  console.log(localStorage.getItem('bitxoName'))
+  // reset display
+  gameDisplay.innerHTML = ''
+  
+  // log current screen
+  console.log('Game')
+  
+  // maybe add this, to prevent page reload, may lose game progress
+  /* window.addEventListener('beforeunload', function(event){
+    event.preventDefault()
+  }) */
+
+  // creating elements for game
+  // navbar
+  const navbar = document.createElement('nav')
+  navbar.id = 'game-navigation'
+  navbar.className = 'navbar'
+
+  // navbar buttons
+  const navbarBtnLabels = ['Status', 'Kitchen', 'Bathroom', 'Play', 'Social', 'Care', 'Bedroom', 'Study']
+
+  navbarBtnLabels.forEach(label => {
+    const navbarBtn = document.createElement('button')
+    navbarBtn.textContent = label
+    navbarBtn.type = 'button'
+    navbarBtn.id = `game-btn-${label.toLowerCase()}`
+    navbarBtn.className = 'game-btn'
+
+    // adding buttons to the navbar
+    navbar.appendChild(navbarBtn)
+  })
+
+  // game area
+  const gamePlayArea = document.createElement('div')
+  gamePlayArea.id = 'game-play-area'
+  gamePlayArea.className = 'game-play-area'
+
+  gameDisplay.style.backgroundImage = 'url(assets/images/spaces/bathroom.jpg)'
+
+  // game bitxo stats
+  const gamePlayNeeds = document.createElement('div')
+  gamePlayNeeds.id = 'game-play-needs'
+  gamePlayNeeds.className = 'game-play-needs'
+
+
+
+  // adding elements into the game display
+  gameDisplay.appendChild(navbar)
+  gameDisplay.appendChild(gamePlayArea)
+  gameDisplay.appendChild(gamePlayNeeds)
+
+  /* 
+      <div id="game-play-needs" class="game-play-needs">
+        <section id="game-play-needs-column" class="game-play-needs-column">
+          <span>BITXO NAME NEEDS</span>
+        </section>
+        <section id="game-play-needs-column" class="game-play-needs-column">
+          <label for="ihunger">Hunger </label>
+          <meter id="ihunger" low="20" high="90" min="0" max="100" value="100"></meter><br>
+          <label for="ibladder">Bladder </label>
+          <meter id="ibladder" low="20" high="90" min="0" max="100" value="5"></meter><br>
+          <label for="ienergy">Energy </label>
+          <meter id="ienergy" low="20" high="90" min="0" max="100" value="50"></meter><br>
+        </section>
+        <section id="game-play-needs-column" class="game-play-needs-column">
+          <label for="ifun">Fun </label>
+          <meter id="ifun" low="20" high="90" min="0" max="100" value="100"></meter><br>
+          <label for="isocial">Social </label>
+          <meter id="isocial" low="20" high="90" min="0" max="100" value="5"></meter><br>
+          <label for="ihygiene">Hygiene </label>
+          <meter id="ihygiene" low="20" high="90" min="0" max="100" value="50"></meter><br>
+        </section>
+      </div>
+  
+  */
 }
 
 /* 
@@ -88,12 +172,6 @@ function game(){
 
 <!-- Menu System -->
 <div class="menus">
-  <div class="menu menu--main">
-    <h1>MENJA</h1>
-    <button type="button" class="play-normal-btn">PLAY GAME</button>
-    <button type="button" class="play-casual-btn">CASUAL MODE</button>
-    <div class="credits">An 8kB game by <a href="https://cmiller.tech">Caleb Miller</a></div>
-  </div>
   <div class="menu menu--pause">
     <h1>Paused</h1>
     <button type="button" class="resume-btn">RESUME GAME</button>
