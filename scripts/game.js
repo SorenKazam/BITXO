@@ -120,8 +120,6 @@ function game(){
   gamePlayNeeds.id = 'game-play-needs'
   gamePlayNeeds.className = 'game-play-needs'
 
-
-
   // adding elements into the game display
   gameDisplay.appendChild(navbar)
   gameDisplay.appendChild(gamePlayArea)
