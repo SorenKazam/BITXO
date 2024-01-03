@@ -8,33 +8,19 @@
 </head>
 <body>
     <div id="game-display" class="game-display">
-    </div>
-
-    
-      <div id="game-play-needs" class="game-play-needs">
-        <section id="game-play-needs-column" class="game-play-needs-column">
-          <span>BITXO NAME NEEDS</span>
-        </section>
-        <section id="game-play-needs-column" class="game-play-needs-column">
-          <label for="ihunger">Hunger </label>
-          <meter id="ihunger" low="20" high="90" min="0" max="100" value="100"></meter><br>
-          <label for="ibladder">Bladder </label>
-          <meter id="ibladder" low="20" high="90" min="0" max="100" value="5"></meter><br>
-          <label for="ienergy">Energy </label>
-          <meter id="ienergy" low="20" high="90" min="0" max="100" value="50"></meter><br>
-        </section>
-        <section id="game-play-needs-column" class="game-play-needs-column">
-          <label for="ifun">Fun </label>
-          <meter id="ifun" low="20" high="90" min="0" max="100" value="100"></meter><br>
-          <label for="isocial">Social </label>
-          <meter id="isocial" low="20" high="90" min="0" max="100" value="5"></meter><br>
-          <label for="ihygiene">Hygiene </label>
-          <meter id="ihygiene" low="20" high="90" min="0" max="100" value="50"></meter><br>
-        </section>
-      </div>
-
-
-    
+    </div> 
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+        <!-- Cabeça -->
+        <circle cx="50" cy="50" r="40" fill="yellow" />
+      
+        <!-- Olhos -->
+        <circle cx="35" cy="40" r="5" fill="black" />
+        <circle cx="65" cy="40" r="5" fill="black" />
+      
+        <!-- Boca -->
+        <path d="M30 60 Q50 80 70 60" fill="none" stroke="black" stroke-width="3" />
+      
+      </svg>
     <script type="module" src="scripts/game.js"></script>
 </body>
 </html>

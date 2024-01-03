@@ -17,7 +17,7 @@ window.addEventListener('load', function(){
 
 /* MENU SYSTEM */
 function menuMain(){
-  localStorage.removeItem('bitxoName')
+  /* localStorage.removeItem('bitxoName') */
     // reset gameDisplay
     gameDisplay.innerHTML = ''
 
@@ -120,13 +120,18 @@ function game(){
   gamePlayNeeds.id = 'game-play-needs'
   gamePlayNeeds.className = 'game-play-needs'
 
+  // stats section 1
+  const gamePlayNeedsCol1 = document.createElement('section')
+  gamePlayNeedsCol1.id = 'game-play-needs-column'
+  gamePlayNeedsCol1.className = 'game-play-needs-column'
+
   // adding elements into the game display
   gameDisplay.appendChild(navbar)
   gameDisplay.appendChild(gamePlayArea)
   gameDisplay.appendChild(gamePlayNeeds)
+  gamePlayNeeds.appendChild(gamePlayNeedsCol1)
 
   /* 
-      <div id="game-play-needs" class="game-play-needs">
         <section id="game-play-needs-column" class="game-play-needs-column">
           <span>BITXO NAME NEEDS</span>
         </section>
@@ -146,7 +151,6 @@ function game(){
           <label for="ihygiene">Hygiene </label>
           <meter id="ihygiene" low="20" high="90" min="0" max="100" value="50"></meter><br>
         </section>
-      </div>
   
   */
 }
